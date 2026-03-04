@@ -83,7 +83,7 @@ header {
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
 nav {
@@ -98,6 +98,50 @@ nav {
     font-size: 1.8rem;
     font-weight: 800;
     color: #6366f1;
+    perspective: 1000px;
+    display: inline-block;
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+}
+
+.logo::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: blur(8px);
+    opacity: 0.6;
+    transform: translateZ(-20px) scaleX(1.05);
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotateX(5deg) rotateY(5deg);
+    }
+}
+
+.logo:hover {
+    animation: rotate3d 0.6s ease-in-out;
+}
+
+@keyframes rotate3d {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    50% {
+        transform: rotateX(10deg) rotateY(15deg) rotateZ(5deg);
+    }
+    100% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
 }
 
 .nav-menu {
@@ -792,6 +836,10 @@ footer {
 }
 
 @media (max-width: 1024px) {
+    .hamburger {
+        display: block !important;
+    }
+    
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -799,31 +847,31 @@ footer {
         flex-direction: column;
         background: white;
         width: 100%;
+        height: calc(100vh - 70px);
         text-align: center;
-        transition: 0.3s;
+        transition: left 0.3s ease-in-out;
         box-shadow: 0 10px 27px rgba(0,0,0,0.05);
-        gap: 0;
         padding: 2rem 0;
-        z-index: 99;
+        gap: 0;
+        z-index: 999;
+        overflow-y: auto;
     }
-    
+
     .nav-menu.active {
         left: 0;
     }
-    
+
     .nav-menu li {
         padding: 1rem 0;
+        width: 100%;
     }
-    
+
     .nav-menu a {
         justify-content: center;
-    }
-    
-    .hamburger {
-        display: flex;
+        font-size: 1.1rem;
+        padding: 0.5rem;
     }
 }
-
 @media (max-width: 768px) {
     .top-info-bar {
         font-size: 0.75rem;
@@ -849,6 +897,7 @@ footer {
     
     .logo {
         font-size: 1.5rem;
+        animation: float 2.5s ease-in-out infinite;
     }
     
     .hero {
@@ -998,28 +1047,72 @@ footer {
     }
 }
 .whatsapp-nav {
-    color: #25D366;
-    font-size: 22px;
+    color: #25D366 !important;
     transition: 0.3s ease;
 }
 
 .whatsapp-nav:hover {
-    color: #128C7E;
-    transform: scale(1.1);
+    color: #128C7E !important;
+    transform: scale(1.05);
 }
 
 .hamburger {
     display: none;
     cursor: pointer;
     z-index: 101;
-}
-
-.hamburger .material-symbols-outlined {
-    font-size: 32px;
+    font-size: 24px;
     color: #6366f1;
-    transition: 0.3s;
+    padding: 8px 12px;
+    line-height: 1;
+    border: 2px solid #6366f1;
+    border-radius: 6px;
+    transition: all 0.3s ease;
 }
 
-.hamburger.active .material-symbols-outlined {
-    transform: rotate(90deg);
+.hamburger:hover {
+    background: rgba(99, 102, 241, 0.1);
+    transform: scale(1.05);
+}
+
+.whatsapp-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    z-index: 998;
+}
+
+.whatsapp-btn:hover {
+    background: #20BA5A;
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-btn svg {
+    width: 28px;
+    height: 28px;
+}
+
+@media (max-width: 768px) {
+    .whatsapp-btn {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .whatsapp-btn svg {
+        width: 24px;
+        height: 24px;
+    }
 }

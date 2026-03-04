@@ -40,9 +40,15 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
 </head>
 <body>
     <!-- <div class="top-info-bar">
@@ -73,21 +79,19 @@
     <nav>
         <div class="logo">TruGhar</div>
         <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span class="material-symbols-outlined">menu</span>
         </div>
         <ul class="nav-menu">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#properties">Properties</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#properties"><i class="fas fa-building"></i> Properties</a></li>
+            <li><a href="#services"><i class="fas fa-concierge-bell"></i> Services</a></li>
+            <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
             <li>
                 <a href="https://wa.me/917237842351?text=Hello%20I%20am%20interested%20in%20a%20property%20from%20TruGhar"
                    target="_blank"
                    class="whatsapp-nav">
-                   <i class="fab fa-whatsapp"> Chat</i>
+                   <i class="fab fa-whatsapp"></i> Chat
                 </a>
             </li>
         </ul>

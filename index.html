@@ -72,15 +72,17 @@
     <header>
     <nav>
         <div class="logo">TruGhar</div>
-
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul class="nav-menu">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#properties">Properties</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-
-            <!-- WhatsApp Icon -->
             <li>
                 <a href="https://wa.me/917237842351?text=Hello%20I%20am%20interested%20in%20a%20property%20from%20TruGhar"
                    target="_blank"
@@ -388,6 +390,21 @@
                 });
             });
         }
+
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
     </script>
 </body>
 </html>
